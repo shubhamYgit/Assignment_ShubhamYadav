@@ -1,0 +1,82 @@
+{
+  "info": {
+    "name": "Backend Engineering Assignment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/posts",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"authorId\": 1,\n  \"authorType\": \"USER\",\n  \"content\": \"Hello from Alice\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Human Comment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/posts/1/comments",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"authorId\": 2,\n  \"authorType\": \"USER\",\n  \"parentCommentId\": null,\n  \"content\": \"Human comment\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Bot Comment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/posts/1/comments",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"authorId\": 1,\n  \"authorType\": \"BOT\",\n  \"parentCommentId\": null,\n  \"content\": \"Bot 1 reply\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Like Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/posts/1/like",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": 1\n}"
+        }
+      }
+    }
+  ]
+}
